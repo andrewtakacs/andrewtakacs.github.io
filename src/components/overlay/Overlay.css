@@ -1,0 +1,104 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Initially off-screen on the right */
+    width: 60%; /* Adjust width as needed */
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    transition: right 0.3s ease-out; /* Smooth transition for sliding effect */
+}
+
+.overlay.active {
+    right: 0; /* Bring the overlay to the right side */
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 2rem;
+}
+
+.category-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+    width: 80%;
+}
+
+.categories button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.categories button:hover {
+    text-decoration: underline;
+}
+
+.dropdown {
+    display: none;
+    margin-left: 150px;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideDown 0.3s ease-out;
+}
+
+.dropdown.active {
+    display: flex;
+}
+
+.dropdown-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    margin-left: 10px;
+    margin-right: 50px;
+    transform: rotate(0);
+    transition: transform 0.3s;
+}
+
+.dropdown-icon.active {
+    transform: rotate(180deg);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
