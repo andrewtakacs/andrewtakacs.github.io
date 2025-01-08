@@ -1,10 +1,16 @@
+/* Overall webpage color */
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+/* What comes out when menu icon in top right is clicked */
 .overlay {
     position: fixed;
     top: 0;
-    right: -100%; /* Initially off-screen on the right */
-    width: 100%; /* to span the whole screen */
+    right: -100%;
+    width: 100%;
     height: 100%;
-    z-index: 100; /* Ensure it is in front of the header */
+    z-index: 1; /* Ensure it is in front of the header */
     background-color: rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     display: flex;
@@ -14,13 +20,8 @@
     transition: right 0.3s ease-out; /* Smooth transition for sliding effect */
 }
 
-body {
-    background-color: rgb(255, 255, 255);
-}
-
 .overlay.active {
     right: 0; /* Bring the overlay to the right side */
-    visibility: visible;
 }
 
 .header {
@@ -31,28 +32,40 @@ body {
     width: 100%; /* Makes sure it spans the full width */
     color: rgb(0, 0, 0); /* Text color */
     background-color: rgb(255, 255, 255);
-    padding: 10px; /* Padding for spacing */
-    display: flex;
     align-items: center; /* Vertically center elements */
-    z-index: 100; /* Ensure underline goes behind text */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
 }
 
+/* This is for the @ symbol top right */
 .header h1 {
     color: rgb(0, 0, 0);
-    margin-left: 5%; /* Makes sure the left element is 5% from the left edge */
+    margin: 0; /* Overall margins */
+    margin-left: 5%; /* Left edge margin */
+    font-size: 1.5rem;
 }
 
-.header .menu-icon {
-    margin-right: 5%; /* Makes sure the right element is 5% from the right edge */
+.menu-icon {
+    margin-right: 5%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.menu-icon div {
+    width: 25px;
+    height: 3px;
+    background-color: black;
 }
 
 .full-width-line {
     width: 100%; /* Ensure the line spans the full width */
     border-top: 1px solid rgb(0, 0, 0); /* Adds a solid black line */
-    padding: 0; /* Removes any padding */
     position: fixed; /* Fixes the header at the top */
     top: 37px;
-    z-index: 102; /* Ensure it's above other content */
 }
 
 .otherfull-width-line {
@@ -62,7 +75,6 @@ body {
     width: 100%; /* Spans the full width of the screen */
     height: 1px; /* Makes it a thin line */
     background-color: white; /* White line color */
-    z-index: 103; /* Ensure it's above other content */
     transition: right 0.3s ease-out; /* Smooth sliding effect */
 }
 
@@ -75,42 +87,46 @@ body {
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    padding: 0 20px;
+    padding-left: 80px; /* Align categories to the left */
     text-align: left;
+    margin: 0; /* Remove any extra margins */
+    justify-content: flex-start;
 }
 
 .category-item {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    font-size: 2rem;
 }
 
 .category-header {
-    position: sticky;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 100px;
-    width: 80%;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center; /* Vertically align the button and the icon */
 }
 
 .categories button {
     background: none;
     border: none;
-    color: rgb(255, 255, 255);
-    font-size: 3vw;
+    margin-left: 15vw;
+    font-size: 1.5rem; /* Adjust button size */
     cursor: pointer;
-    text-align: left;
-    flex-grow: 1;
+    color: white;
 }
+
+.category-item .link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 
 @media (max-width: 768px) {
     .categories button {
       font-size: 6vw; /* Adjust for tablet screens */
       transform: translateX(-50px);
     }
-  }
+}
 
 .categories button:hover {
     text-decoration: underline;
@@ -118,10 +134,9 @@ body {
 
 .dropdown {
     display: none;
-    margin-left: 150px;
+    margin-left: 0; /* Remove the margin-left to align properly */
     flex-direction: column;
     gap: 10px;
-    animation: slideDown 0.3s ease-out;
 }
 
 .dropdown.active {
@@ -129,16 +144,10 @@ body {
 }
 
 .dropdown-icon {
-    color: white;
+    color: rgb(255, 255, 255); /* Ensure the dropdown icon is visible */
     cursor: pointer;
     font-size: 1.5rem;
-    margin-left: 10px;
-    margin-right: 50px;
-    transform: rotate(0);
-    transition: transform 0.3s;
-    z-index: 999;
 }
-
 .dropdown-icon.active {
     transform: rotate(180deg);
 }
@@ -169,7 +178,7 @@ body {
 /* Space Page (Overlay) Styles */
 
 /* Space Page Container */
-.space-page body{
+.space-page body {
     background-color: rgb(0, 0, 0); /* Set background color for space page */
 }
 
@@ -179,16 +188,20 @@ body {
     color: rgb(255, 255, 255); /* Set overlay text color */
 }
 
-/* Header */
+/* Header 
 .space-page .header {
-    color: rgb(255, 255, 255); /* Set header text color */
-    background-color: rgb(0, 0, 0); /* Set header background color */
-}
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    There is a bug here where it does not apply to just the space page but instead with every page
+*/
 
 /* @ */
+/*
 .space-page .header h1 {
     color: rgb(255, 255, 255);
 }
+Same bug as above... check why this does not happen with menu icon because menu icon works
+*/
 
 /* Full Width Line */
 .space-page .full-width-line {

@@ -1,8 +1,9 @@
 import React from 'react';
 import Home from '../home/Home';
 import EarthCode from '../earth/EarthCode';
-import '../overlay/Overlay.css';  // Import the Overlay CSS directly
+
 import Overlay from '../overlay/Overlay';
+import '../overlay/Overlay.css';
 
 const Space = () => {
   return (

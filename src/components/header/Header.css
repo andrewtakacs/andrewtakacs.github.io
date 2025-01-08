@@ -1,26 +1,2 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: white;
-}
 
-.header h1 {
-    margin: 0;
-    font-size: 1.5rem;
-}
 
-.menu-icon {
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-left: auto;
-}
-
-.menu-icon div {
-    width: 25px;
-    height: 3px;
-    background-color: black;
-}

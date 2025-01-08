@@ -1,16 +1,14 @@
-// src/pages/Contact.js
 import React from 'react';
 import Overlay from '../overlay/Overlay';
 import '../overlay/Overlay.css';
 
-const Contact = () => {
+const LatestPosts = () => {
   return (
     <div>
-      <Overlay />
-      <h2>About Me</h2>
-      {/* Add content here */}
+        <Overlay />
+      <p>Welcome to Project1 Page</p>
     </div>
   );
 };
 
-export default Contact;
+export default LatestPosts;
