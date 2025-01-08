@@ -2,20 +2,72 @@
     position: fixed;
     top: 0;
     right: -100%; /* Initially off-screen on the right */
-    width: 60%; /* Adjust width as needed */
+    width: 100%; /* to span the whole screen */
     height: 100%;
-    background-color: black;
-    color: white;
+    z-index: 100; /* Ensure it is in front of the header */
+    background-color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
     transition: right 0.3s ease-out; /* Smooth transition for sliding effect */
+}
+
+body {
+    background-color: rgb(255, 255, 255);
 }
 
 .overlay.active {
     right: 0; /* Bring the overlay to the right side */
+    visibility: visible;
+}
+
+.header {
+    position: fixed; /* Fixes the header at the top */
+    top: 0; /* Aligns it to the very top of the page */
+    left: 50%; /* Center head horizontally*/
+    transform: translateX(-50%); /* Adjusts the header to be exactly centered */
+    width: 100%; /* Makes sure it spans the full width */
+    color: rgb(0, 0, 0); /* Text color */
+    background-color: rgb(255, 255, 255);
+    padding: 10px; /* Padding for spacing */
+    display: flex;
+    align-items: center; /* Vertically center elements */
+    z-index: 100; /* Ensure underline goes behind text */
+}
+
+.header h1 {
+    color: rgb(0, 0, 0);
+    margin-left: 5%; /* Makes sure the left element is 5% from the left edge */
+}
+
+.header .menu-icon {
+    margin-right: 5%; /* Makes sure the right element is 5% from the right edge */
+}
+
+.full-width-line {
+    width: 100%; /* Ensure the line spans the full width */
+    border-top: 1px solid rgb(0, 0, 0); /* Adds a solid black line */
+    padding: 0; /* Removes any padding */
+    position: fixed; /* Fixes the header at the top */
+    top: 37px;
+    z-index: 102; /* Ensure it's above other content */
+}
+
+.otherfull-width-line {
+    position: fixed;
+    top: 37px; /* Positioned right below the header */
+    right: -100%; /* Initially off-screen on the right */
+    width: 100%; /* Spans the full width of the screen */
+    height: 1px; /* Makes it a thin line */
+    background-color: white; /* White line color */
+    z-index: 103; /* Ensure it's above other content */
+    transition: right 0.3s ease-out; /* Smooth sliding effect */
+}
+
+.otherfull-width-line.active {
+    right: 0; /* Moves the line into view */
 }
 
 .categories {
@@ -35,22 +87,30 @@
 }
 
 .category-header {
+    position: sticky;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 150px;
+    margin-left: 100px;
     width: 80%;
 }
 
 .categories button {
     background: none;
     border: none;
-    color: white;
-    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    font-size: 3vw;
     cursor: pointer;
     text-align: left;
     flex-grow: 1;
 }
+
+@media (max-width: 768px) {
+    .categories button {
+      font-size: 6vw; /* Adjust for tablet screens */
+      transform: translateX(-50px);
+    }
+  }
 
 .categories button:hover {
     text-decoration: underline;
@@ -69,12 +129,14 @@
 }
 
 .dropdown-icon {
+    color: white;
     cursor: pointer;
     font-size: 1.5rem;
     margin-left: 10px;
     margin-right: 50px;
     transform: rotate(0);
     transition: transform 0.3s;
+    z-index: 999;
 }
 
 .dropdown-icon.active {
@@ -83,9 +145,10 @@
 
 .close {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 2.5rem;
+    margin-right: 5%;
+    top: 5px;
+    right: 15px;
+    font-size: 2rem;
     background: none;
     border: none;
     color: white;
@@ -101,4 +164,58 @@
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/* Space Page (Overlay) Styles */
+
+/* Space Page Container */
+.space-page body{
+    background-color: rgb(0, 0, 0); /* Set background color for space page */
+}
+
+/* Overlay */
+.space-page .overlay {
+    background-color: rgb(0, 0, 0); /* Set overlay background color */
+    color: rgb(255, 255, 255); /* Set overlay text color */
+}
+
+/* Header */
+.space-page .header {
+    color: rgb(255, 255, 255); /* Set header text color */
+    background-color: rgb(0, 0, 0); /* Set header background color */
+}
+
+/* @ */
+.space-page .header h1 {
+    color: rgb(255, 255, 255);
+}
+
+/* Full Width Line */
+.space-page .full-width-line {
+    border-top: 1px solid rgb(255, 255, 255); /* Set full width line color */
+}
+
+/* Other Full Width Line */
+.space-page .otherfull-width-line {
+    background-color: rgb(255, 255, 255); /* Set other full width line color */
+}
+
+/* Categories Section */
+.space-page .categories button {
+    color: rgb(255, 255, 255); /* Set button text color */
+}
+
+.space-page .header .menu-icon {
+    margin-right: 5%; /* Makes sure the right element is 5% from the right edge */
+    background-color: white;
+}
+
+.space-background-div {
+    position: fixed; /* Fixed to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Full height of the viewport */
+    background-color: rgb(0, 0, 0); /* Background color */
+    z-index: -10; /* Make sure it stays behind other content */
 }

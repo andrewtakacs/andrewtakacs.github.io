@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Link } from 'react';
 import './Overlay.css'; // Importing the CSS for Overlay
 
 const Overlay = () => {
@@ -15,6 +15,19 @@ const Overlay = () => {
     icon.classList.toggle('active');
   };
 
+  // Add or remove the 'active' class from '.otherfull-width-line' and '<h1>' when 'isOverlayActive' changes
+  useEffect(() => {
+    const otherFullWidthLine = document.querySelector('.otherfull-width-line');
+    const header = document.querySelector('h1');
+    if (otherFullWidthLine) {
+      if (isOverlayActive) {
+        otherFullWidthLine.classList.add('active');
+      } else {
+        otherFullWidthLine.classList.remove('active');
+      }
+    }
+  }, [isOverlayActive]);
+
   return (
     <div>
       <div className="header">
@@ -25,19 +38,27 @@ const Overlay = () => {
           <div></div>
         </div>
       </div>
-
       {/* Overlay div that slides in */}
-      <div className={`overlay ${isOverlayActive ? 'active' : ''}`} id="overlay">
+      <div
+        className={`overlay ${isOverlayActive ? 'active' : ''}`}
+        id="overlay"
+      >
+        
         <button className="close" id="closeOverlay" onClick={toggleOverlay}>
           &times;
         </button>
+        <hr className="otherfull-width-line" />
         <div className="categories">
           <div className="category-item">
             <div className="category-header">
               <button className="main-button" onClick={() => window.location.href = 'about.html'}>
                 About Me
               </button>
-              <span className="dropdown-icon" id="aboutIcon" onClick={() => toggleDropdown('aboutDropdown', 'aboutIcon')}>
+              <span
+                className="dropdown-icon"
+                id="aboutIcon"
+                onClick={() => toggleDropdown('aboutDropdown', 'aboutIcon')}
+              >
                 &#9662;
               </span>
             </div>
@@ -45,13 +66,16 @@ const Overlay = () => {
               <button onClick={() => window.location.href = 'about.html'}>Overview</button>
             </div>
           </div>
-
           <div className="category-item">
             <div className="category-header">
               <button className="main-button" onClick={() => window.location.href = 'projects.html'}>
                 Projects/Experience
               </button>
-              <span className="dropdown-icon" id="projectsIcon" onClick={() => toggleDropdown('projectsDropdown', 'projectsIcon')}>
+              <span
+                className="dropdown-icon"
+                id="projectsIcon"
+                onClick={() => toggleDropdown('projectsDropdown', 'projectsIcon')}
+              >
                 &#9662;
               </span>
             </div>
@@ -67,7 +91,11 @@ const Overlay = () => {
               <button className="main-button" onClick={() => window.location.href = 'education.html'}>
                 Education
               </button>
-              <span className="dropdown-icon" id="educationIcon" onClick={() => toggleDropdown('educationDropdown', 'educationIcon')}>
+              <span
+                className="dropdown-icon"
+                id="educationIcon"
+                onClick={() => toggleDropdown('educationDropdown', 'educationIcon')}
+              >
                 &#9662;
               </span>
             </div>
@@ -81,21 +109,29 @@ const Overlay = () => {
               <button className="main-button" onClick={() => window.location.href = 'blog.html'}>
                 Blog
               </button>
-              <span className="dropdown-icon" id="blogIcon" onClick={() => toggleDropdown('blogDropdown', 'blogIcon')}>
+              <span
+                className="dropdown-icon"
+                id="blogIcon"
+                onClick={() => toggleDropdown('blogDropdown', 'blogIcon')}
+              >
                 &#9662;
               </span>
             </div>
             <div id="blogDropdown" className="dropdown">
               <button onClick={() => window.location.href = 'blog.html'}>Latest Posts</button>
+              <button onClick={() => window.location.href = '/space'}>Space</button>
             </div>
           </div>
-
           <div className="category-item">
             <div className="category-header">
               <button className="main-button" onClick={() => window.location.href = 'contact.html'}>
                 Contact
               </button>
-              <span className="dropdown-icon" id="contactIcon" onClick={() => toggleDropdown('contactDropdown', 'contactIcon')}>
+              <span
+                className="dropdown-icon"
+                id="contactIcon"
+                onClick={() => toggleDropdown('contactDropdown', 'contactIcon')}
+              >
                 &#9662;
               </span>
             </div>
@@ -105,7 +141,7 @@ const Overlay = () => {
           </div>
         </div>
       </div>
-      <hr />
+      <hr className="full-width-line" />
     </div>
   );
 };

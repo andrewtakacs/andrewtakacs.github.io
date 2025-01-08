@@ -1,0 +1,90 @@
+/* Wrapper to center the content in the viewport */
+.wrapper {
+    display: flex;
+    margin-left: 10%;
+    margin-top: 100px;
+    margin-right: auto;
+    height: 50vh;
+    flex-direction: column;
+    width: 90%; /* Make the width responsive */
+    max-width: 500px; /* Prevents it from growing too large */
+}
+
+/* Container for the text box with a slight height increase */
+.textBoxContainer {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(0, 0, 0);
+    height: auto;
+    line-height: 1.5;
+    justify-content: flex-start; /* Align content to the left horizontally */
+    align-items: flex-start; /* Align content to the top vertically */
+    position: relative; /* Needed for absolute positioning */
+    width: fit-content; /* Make the width responsive */
+}
+
+/* Text Box with same size as the container */
+.textBox {
+    min-height: 50px; /* Ensure it has a minimum height */
+    border: none;
+    padding: 10px;
+    display: block; /* Makes it behave like a block-level element */
+    overflow: hidden;
+    font-size: 1.5em; /* Make font size responsive */
+    width: 100%; /* Let the text box stretch to fit the container */
+}
+
+/* Button to change text */
+.changeButton {
+    width: 25%; /* Make the button width responsive */
+    position: relative;
+    top: 5px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 5px 15px;
+    text-align: center; /* Center the text inside the button */
+}
+
+.changeButton:hover {
+    background-color: #acacac;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .wrapper {
+        margin-top: 10%; /* Adjust for smaller screens */
+        width: 85%; /* Make it take up more space on small screens */
+    }
+
+    .changeButton {
+        width: 15%; /* Adjust button size on smaller screens */
+    }
+
+    .textBox {
+        font-size: 1.2em; /* Adjust text size for readability */
+    }
+}
+
+/* Media query for very small screens (like mobile devices) */
+@media (max-width: 480px) {
+    .wrapper {
+        margin-top: 15%; /* Adjust top margin for small screens */
+        width: 20%; /* Ensure the wrapper fits smaller screens */
+    }
+
+    .textBoxContainer {
+        width: 385%;
+    }
+
+    .textBox {
+        font-size: 1.2em; /* Smaller text on very small screens */
+        
+    }
+
+    .changeButton {
+        width: 90%; /* Make button larger on small screens */
+        padding: 8px 20px; /* Increase padding for better touchability */
+    }
+}
